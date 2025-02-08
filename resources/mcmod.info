@@ -1,0 +1,15 @@
+[
+  {
+    "modid": "fortnite1337",
+    "name": "Te1aModUtils",
+    "description": "Client-sided moderation tool",
+    "version": "1.0.0",
+    "mcversion": "1.8",
+    "updateUrl": "",
+    "authorList": ["Te1a"],
+    "logoFile": "",
+    "screenshots": [],
+    "acceptedMinecraftVersions": ["1.8", "1.8.8", "1.8.9"],
+    "dependencies": []
+  }
+]
