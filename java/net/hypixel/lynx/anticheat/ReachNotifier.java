@@ -32,7 +32,7 @@ public class ReachNotifier {
         if (e.phase == TickEvent.Phase.START) {
             swung = false;
             nearestTookDamage = false;
-            if (System.currentTimeMillis() - lastValidSwingTime >= 500L) {
+            if (System.currentTimeMillis() - lastValidSwingTime >= 250L) { // usually 500 ms
                 lastValidSwingTime = 0L;
                 sentAlert = false;
             }
