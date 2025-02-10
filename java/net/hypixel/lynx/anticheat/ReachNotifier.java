@@ -22,8 +22,10 @@ public class ReachNotifier {
 
     public static boolean swung = false;
     public static long lastValidSwingTime = 0L;
+    public static long lastValidSwingTime2 = 0L; // used for the "combo start" check
     public static boolean nearestTookDamage = false;
     public static boolean sentAlert = false;
+    public static boolean checkedAfterComboStart = false;
 
     @SubscribeEvent
     public void onTick(TickEvent e) {
@@ -35,6 +37,10 @@ public class ReachNotifier {
             if (System.currentTimeMillis() - lastValidSwingTime >= 250L) { // usually 500 ms
                 lastValidSwingTime = 0L;
                 sentAlert = false;
+            }
+            if (System.currentTimeMillis() - lastValidSwingTime2 >= 850L && checkedAfterComboStart) {
+                lastValidSwingTime2 = 0L;
+                checkedAfterComboStart = false;
             }
         }
 
@@ -57,12 +63,13 @@ public class ReachNotifier {
             if (Lynx.getTargetingUI().getTarget().isSwingInProgress && lastValidSwingTime <= 0L) {
                 swung = true;
                 lastValidSwingTime = System.currentTimeMillis();
+                lastValidSwingTime2 = System.currentTimeMillis();
             }
 
             EntityPlayer entity = Lynx.getTargetingUI().getTarget();
 
             // Actually send the message
-            if (swung && nearestTookDamage && System.currentTimeMillis() - lastValidSwingTime <= 100L && !sentAlert) {
+            if (swung && nearestTookDamage && System.currentTimeMillis() - lastValidSwingTime <= 100L && !sentAlert && !checkedAfterComboStart) {
                 if (dist >= 3.3) {
                     ChatFacade.get().printChatMessage(new ChatComponentText("\u00A73[TMU / !] \u00A7b" + entity.getName() + " \u00A73attacked \u00A7b" + nearestPlayer.getName() + " \u00A73from \u00A79" + dist + " blocks\u00A73."));
                 }
@@ -71,6 +78,7 @@ public class ReachNotifier {
                 }
 
                 sentAlert = true;
+                checkedAfterComboStart = true;
             }
 
         }
