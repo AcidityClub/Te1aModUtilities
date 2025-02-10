@@ -50,7 +50,7 @@ public class ReachNotifier {
                 }
             }
 
-            if (nearestPlayer != null && nearestPlayer.hurtTime >= 9) {
+            if (nearestPlayer != null && nearestPlayer.hurtTime > 0) {
                 nearestTookDamage = true;
             }
 
