@@ -19,7 +19,7 @@ public enum TabFilter implements Filter {
    NCP(false, ".*\u00A7cNCP: (\u00A7[fr])+(Your configuration|(?<username>[A-Za-z0-9_]{3,16})) .*"),
    PRIVATE_MESSAGE(false, "(\u00A7dFrom |\u00A7dTo )(?<text>.*)"),
    TUNNEL(false, "([\u00A7ar]+Tunneled to [a-z0-9]+|[\u00A75r]+\\[T\\] (\\* )?(([\u00A7a-fr0-9]*\\[[\u00A7A-Za-z✫0-9\\-\\s]+(\\+([\u00A7rab]*))?\\][\u00A7a-f0-9]*\\s)*)(([\u00A7r7]{4})?)(?<username>[A-Za-z0-9_]{3,16})([\u00A7rf7]*)?\\: (?<text>.*))"),
-   CHAT("(\\[\\W\\] )?(\\* )?(\\[[A-Z]{3}\\])?(([\u00A7a-fr0-9]*\\[[\u00A7A-Za-z✫0-9\\-\\s]+(\\+([\u00A7rab]*))?\\][\u00A7a-f0-9]*\\s)*)(([\u00A7r7]{4})?)(?<username>[A-Za-z0-9_]{3,16})([\u00A7rf7]*)?\\: (?<text>.*)"),
+   CHAT("(\\[\\W\\] )?(\\* )?(\\[[A-Z]{3}\\])?(([\u00A7a-fr0-9]*\\[[\u00A7A-Za-z✫0-9\\-\\s]+(\\+([\u00A7rab]*))?\\][\u00A7a-f0-9]*\\s)*)(([\u00A7r7]{4})?)(?<username>[A-Za-z0-9_]{3,16})([\u00A7rf7]*)?(\\s(?<tag>[A-Za-z0-9\\-\\s]+))?\\s*\\: (?<text>.*)"),
    PARTY("Party \\> (\\[[A-Za-z0-9\\-\\s]+\\+?\\]+\\s)*(?<username>[A-Za-z0-9_]{3,16}): (?<text>.*)"),
    GUILD("Guild \\> (\\[[A-Za-z0-9\\-\\s]+\\+?\\]+\\s)*(?<username>[A-Za-z0-9_]{3,16}): (?<text>.*)"),
    GENERAL(false, ".*");
